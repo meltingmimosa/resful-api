@@ -57,7 +57,7 @@ app.head(
 		resp.status(200);
 		resp.type("application/json");
 		resp.header('Accept-Ranges','items');
-		resp.end();
+		resp.end(); //test
 	}
 )
 
