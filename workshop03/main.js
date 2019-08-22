@@ -24,7 +24,7 @@ console.info(`Using ${keys.mongo}`);
 // if they are not the defaults below
 const db = CitiesDB({  
 	connectionUrl: keys.mongo, 
-	databaseName: 'zips', 
+	databaseName: 'cities', 
 	collectionName: 'city'
 });
 
