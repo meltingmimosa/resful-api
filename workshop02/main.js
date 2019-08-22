@@ -120,23 +120,25 @@ app.get(
 
 
 // TODO POST /api/city
-app.get(
-	'/api/city/:cityId',
+//application/x-www-form-urlencided - body
+app.post(
+	'/api/city',
 	(req,resp) => {
-		const cityId = req.params.cityId;
-		db.findCityById(cityId)
+		const data = req.body
+		console.info('>> data:', data)
+
+		db.insertCity(data)
 		.then (result => {
-			resp.type('application/json');
-			if(result.length > 0)
-			{
-				resp.status(200);
-			}
-			resp.json(result[0]);
+			resp.status(201)
+			resp.type('application/json')
+			resp.json({message:'added'});
 		})
 		.catch(error => {
 			resp.status(400);
-			resp.json({message:`CityId ${cityId} not found`});
+			resp.type('text/plain');
+			resp.send(error);
 		})
+
 	}
 )
 
